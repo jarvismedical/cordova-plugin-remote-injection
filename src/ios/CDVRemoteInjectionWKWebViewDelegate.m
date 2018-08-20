@@ -23,6 +23,7 @@
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation
 {
+    [self.webViewDelegate setContentUrl:webView.URL];
     [self.webViewDelegate onWebViewDidStartProvisionalNavigation];
     
     if ([self.wrappedDelegate respondsToSelector:@selector(webView:didStartProvisionalNavigation:)]) {
@@ -103,7 +104,7 @@
 -(BOOL) isLoading
 {
     WKWebView *webView = [self.plugin findWebView];
-    return webView.loading;
+    return webView.loading || webView.URL == nil;
 }
 
 /*
@@ -114,7 +115,7 @@
     WKWebView *webView = [self.plugin findWebView];
     
     [webView stopLoading];
-    [webView reload];
+    [webView loadRequest:[NSURLRequest requestWithURL:self.contentUrl]];
 }
 
 @end

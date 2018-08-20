@@ -4,6 +4,7 @@
 
 @interface CDVRemoteInjectionWKWebViewDelegate: CDVRemoteInjectionWebViewBaseDelegate <CDVRemoteInjectionWebViewDelegate>
 @property (readwrite, weak) CDVRemoteInjectionPlugin *plugin;
+@property NSURL* contentUrl;
 - (void) onWebViewDidFinishLoad:(WKWebView *)webView;
 - (void) onWebViewDidStartProvisionalNavigation;
 - (void) onWebViewDidFailNavigation:(NSError *)error;
