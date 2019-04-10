@@ -169,7 +169,7 @@
                                  cancelButtonTitle:cancelText
                                  otherButtonTitles:nil];
     if (retry) {
-        [alertView addButtonWithTitle:@"Retry"];
+        [alertView addButtonWithTitle:@"重试"];
     }
     [alertView show];
 }
@@ -220,7 +220,7 @@
     }
 
     if (userRequestedReload == NO && self.plugin.showConnectionErrorDialog == YES) {
-        [self displayRetryPromptWithMessage:@"Unable to contact the site." withCancelText:@"Close" retryable:YES];
+        [self displayRetryPromptWithMessage:@"网络连接错误，无法连接服务器。" withCancelText:@"关闭" retryable:YES];
     }
 }
 
