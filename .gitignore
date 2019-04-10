@@ -1,0 +1,10 @@
+node_modules/
+target/
+dist/
+.idea/
+.git/
+*.iml
+*.log
+package-lock.json
+*.orig
+.vscode
