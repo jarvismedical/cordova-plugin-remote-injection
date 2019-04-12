@@ -163,7 +163,7 @@
  */
 -(void) displayRetryPromptWithMessage:(NSString*)message withCancelText:(NSString *)cancelText retryable:(BOOL) retry
 {
-    alertView = [[UIAlertView alloc] initWithTitle:@"Connection Error"
+    alertView = [[UIAlertView alloc] initWithTitle:@"网络错误"
                                            message:message
                                           delegate:self
                                  cancelButtonTitle:cancelText
