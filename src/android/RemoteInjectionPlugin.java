@@ -288,21 +288,21 @@ public class RemoteInjectionPlugin extends CordovaPlugin {
                     @Override
                     public void run() {
                         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-                        builder.setMessage("The server is taking longer than expected to respond.")
+                        builder.setMessage("连接错误，服务器连接超时。")
                                 .setOnDismissListener(new DialogInterface.OnDismissListener() {
                                     @Override
                                     public void onDismiss(DialogInterface dialog) {
                                         UserPromptTask.this.cleanup();
                                     }
                                 })
-                                .setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                                .setPositiveButton("重试", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int id) {
                                         // Obviously only works for GETs but good enough.
                                         engine.loadUrl(engine.getUrl(), false);
                                     }
                                 })
-                                .setNegativeButton("Wait", new DialogInterface.OnClickListener() {
+                                .setNegativeButton("等待", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int id) {
                                         lifecycle.startTask(url);

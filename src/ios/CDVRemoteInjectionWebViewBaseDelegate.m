@@ -150,7 +150,7 @@
     if (lastRequestTime != NULL && [(NSDate *)requestTime isEqualToDate:lastRequestTime]) {
         if ([self isLoading]) {
             NSLog(@"Request taking too long, displaying dialog.");
-            [self displayRetryPromptWithMessage:@"The server is taking longer than expected to respond." withCancelText:@"Wait" retryable:YES];
+            [self displayRetryPromptWithMessage:@"请求超时，服务器在指定时间内未响应." withCancelText:@"等待" retryable:YES];
             return;
         } else {
             NSLog(@"No request in progress.  Not displaying dialog.");
@@ -163,13 +163,13 @@
  */
 -(void) displayRetryPromptWithMessage:(NSString*)message withCancelText:(NSString *)cancelText retryable:(BOOL) retry
 {
-    alertView = [[UIAlertView alloc] initWithTitle:@"Connection Error"
+    alertView = [[UIAlertView alloc] initWithTitle:@"网络错误"
                                            message:message
                                           delegate:self
                                  cancelButtonTitle:cancelText
                                  otherButtonTitles:nil];
     if (retry) {
-        [alertView addButtonWithTitle:@"Retry"];
+        [alertView addButtonWithTitle:@"重试"];
     }
     [alertView show];
 }
@@ -220,7 +220,7 @@
     }
 
     if (userRequestedReload == NO && self.plugin.showConnectionErrorDialog == YES) {
-        [self displayRetryPromptWithMessage:@"Unable to contact the site." withCancelText:@"Close" retryable:YES];
+        [self displayRetryPromptWithMessage:@"网络连接错误，无法连接服务器。" withCancelText:@"关闭" retryable:YES];
     }
 }
 
